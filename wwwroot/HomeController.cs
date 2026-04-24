@@ -26,7 +26,7 @@ namespace GZMaps.wwwroot
                 WriteIndented = true
             });
 
-            System.IO.File.WriteAllText(Path.Combine(_mapDataFolder, "data.json");, jsonString);
+            File.WriteAllText(Path.Combine(_mapDataFolder, "data.json");, jsonString);
 
             return Content("File saved successfully");
         }
@@ -35,8 +35,7 @@ namespace GZMaps.wwwroot
         public IActionResult GetMapData()
         {
             string filePath = Path.Combine(
-                Directory.GetCurrentDirectory(),
-                "MapData",
+                _mapDataFolder,
                 "data.json"
             );
 
