@@ -1,1 +1,1 @@
-
+- Endpoints: GetMapSaves, POSTMapSaves, GetPassword
