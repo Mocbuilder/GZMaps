@@ -1,2 +1,1 @@
-this is the wip_frontend branch ;)_
-- - Endpoints: GetMapSaves, POSTMapSaves, GetPassword
+- Endpoints: GetMapData, POSTMapData, GetPassword
