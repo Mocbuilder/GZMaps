@@ -1,10 +1,50 @@
 ﻿@page
-@model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <button id="ts">Test-Save</button>
+    <button id="tp">Test-Passwort</button>
+    <button id="tm">Test-Mapdata</button>
+    <script>
+        let ts = document.getElementById("ts");
+        ts.addEventListener("click", async (e) => {
+          const response = await fetch("/POSTMapData", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              "test": "test",
+              "test2": {
+                  "test3": [
+                      "test4","test5"
+                  ]
+              }
+            }),
+          });
+        });
+
+        let tp = document.getElementById("tp");
+        tp.addEventListener("click", async (e) => {
+          const response = await fetch("/GETPassword");
+          console.log(await response.json());
+        });
+
+        let tm = document.getElementById("tm");
+        tm.addEventListener("click", async (e) => {
+          const response = await fetch("/GETMapData");
+          console.log(await response.json());
+        });
+    </script>
+</body>
+</html>
+

@@ -2,9 +2,9 @@
 using System.IO;
 using System.Reflection;
 
-namespace GZMaps.wwwroot
+namespace GZMaps.Controllers
 {
-    public class HomeController : Controller
+    public class tController : Controller
     {
         string _mapDataFolder = Path.Combine(Directory.GetCurrentDirectory(), "MapData");
 
@@ -21,18 +21,18 @@ namespace GZMaps.wwwroot
                 Directory.CreateDirectory(_mapDataFolder);
             }
 
-            string jsonString = JsonSerializer.Serialize(jsonData, new JsonSerializerOptions
+            string jsonString = System.Text.Json.JsonSerializer.Serialize(jsonData, new System.Text.Json.JsonSerializerOptions
             {
                 WriteIndented = true
             });
 
-            File.WriteAllText(Path.Combine(_mapDataFolder, "data.json");, jsonString);
+            System.IO.File.WriteAllText(Path.Combine(_mapDataFolder, "data.json"), jsonString);
 
             return Content("File saved successfully");
         }
 
         [HttpGet]
-        public IActionResult GetMapData()
+        public IActionResult GETMapData()
         {
             string filePath = Path.Combine(
                 _mapDataFolder,
@@ -40,13 +40,13 @@ namespace GZMaps.wwwroot
             );
 
             string jsonData = System.IO.File.ReadAllText(filePath);
-            var obj = JsonConvert.DeserializeObject(jsonData);
+            var obj = System.Text.Json.JsonSerializer.Deserialize<object>(jsonData);
 
             return Json(obj);
         }
 
         [HttpGet]
-        public IActionResult GetMapData()
+        public IActionResult GETPassword()
         {
             var assembly = Assembly.GetExecutingAssembly();
             string resourceName = "GZMaps.password.json";
@@ -61,7 +61,7 @@ namespace GZMaps.wwwroot
             using StreamReader reader = new StreamReader(stream);
             string jsonData = reader.ReadToEnd();
 
-            var obj = JsonConvert.DeserializeObject(jsonData);
+            var obj = System.Text.Json.JsonSerializer.Deserialize<object>(jsonData);
 
             return Json(obj);
         }
