@@ -6,7 +6,7 @@
   margin: 0px;
   padding: 0px;
   list-style: none;
-  font-family: fantasy;
+  font-family:'Times New Roman', Times, serif;
   color: var(--text-color);
   font-size: 1.07em;
   font-weight: bolder;
@@ -32,15 +32,109 @@ main {
   grid-template-columns: 10vw 80vw 10vw;
 }
 
-.map {
+.full_map {
   display: grid;
   justify-self: center;
   align-self: center;
-  background: black;
   aspect-ratio: 1/1;
   max-height: 80vh;
   height: 100%;
   width: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . d d d d d . . . . . . . e e e . . . ."
+    ". . . . . . . . . . . . . d d d d d . . . . . . . e e e . . . ."
+    ". . . . . . . . . . . . . d d d d d . . . . . . . e e e . . . ."
+    ". . . . . . . . . . . . . d d d d d . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . d d d d d . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . . y . . . . . . . . . f f f . . . ."
+    ". . . . . . . . . . . . . . . y . . . . . . . . . f f f . . . ."
+    ". . . . . . . c c c c c c c c c c c c c c c c c . f f f . . . ."
+    ". . . . . . . c c c c c c c c c c c c c c c c c . f f f . . . ."
+    ". . . . . . . c c c c c c c c c c c c c c c c c . f f f . . . ."
+    ". . . . . . . . . x . . . . . . . . . . . . z . . . . . . . . ."
+    ". . . . . . . . . x . . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . . x . . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . . . . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . g g . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . g g . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . g g . . . ."
+    ". . . . . . . . b b b . . . . . . . . . . a a a . . g g . . . ."
+    ". . . . . . . . . . . . . . . . . . . . . a a a . . g g . . . ."
+    ". . . . . . . . . . . . . . . . . . . . . . . . . . g g . . . ."
+    ". . . . . . . . . . . . . . . . . . . . . . . . . . g g . . . ."
+    ". . . . . . . . . . . . . h . . . . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . h . . . . . . . . . . . . . . . . . ."
+    ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .";
+}
+
+.houses {
+  display: grid;
+  background: black;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.corridors {
+  display: grid;
+  background: gray;
+  height: 100%;
+  width: 100%;
+}
+
+.haus-1 {
+  grid-area: a;
+}
+
+.haus-2 {
+  grid-area: b;
+}
+
+.haus-3 {
+  grid-area: c;
+}
+
+.haus-4 {
+  grid-area: d;
+}
+
+.haus-5 {
+  grid-area: e;
+}
+
+.haus-6 {
+  grid-area: f;
+}
+
+.haus-8 {
+  grid-area: g;
+}
+
+.haus-11 {
+  grid-area: h;
+}
+
+.gang-1 {
+  grid-area: z;
+}
+
+.gang-2 {
+  grid-area: y;
+}
+
+.gang-3 {
+  grid-area: x;
 }
 
 @media (orientation: portrait) {
