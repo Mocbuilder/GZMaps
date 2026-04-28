@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace GZMaps.wwwroot
 {
-    public class HomeController : Controller
+    public class tController : Controller
     {
         string _mapDataFolder = Path.Combine(Directory.GetCurrentDirectory(), "MapData");
 
