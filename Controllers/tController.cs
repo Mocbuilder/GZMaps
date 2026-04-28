@@ -51,7 +51,7 @@ namespace GZMaps.Controllers
             var assembly = Assembly.GetExecutingAssembly();
             string resourceName = "GZMaps.password.json";
 
-            using Stream stream = assembly.GetManifestResourceStream(resourceName);
+            using Stream stream = assembly.GetManifestResourceStream(resourceName) ?? throw new FileNotFoundException("Embedded JSON file not found.", resourceName);
 
             if (stream == null)
             {
