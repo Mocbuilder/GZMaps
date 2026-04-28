@@ -1,67 +1,50 @@
 ﻿@page
+@{
+    ViewData["Title"] = "Home page";
+}
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GZMaps</title>
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/css/index.css" />
+    <title>Document</title>
 </head>
 <body>
-    <header class="bar">
-        <p class="bar-text headline">GZMaps</p>
-    </header>
-    <main>
-        <div class="edit">
-            <p class="button">Zurück</p>
-            <p class="button">Bearbeiten</p>
-        </div>
-        <div class="full-map" id="full-map">
-            <div class="house-1 houses">
-                <p>1</p>
-            </div>
-            <div class="house-2 houses">
-                <p>2</p>
-            </div>
-            <div class="house-3 houses">
-                <p>3</p>
-            </div>
-            <div class="house-4 houses">
-                <p>4</p>
-            </div>
-            <div class="house-5 houses">
-                <p>5</p>
-            </div>
-            <div class="house-6 houses">
-                <p>6</p>
-            </div>
-            <div class="house-8 houses">
-                <p>8</p>
-            </div>
-            <div class="house-11 houses">
-                <p>11</p>
-            </div>
-            <div class="corridor-1 corridors"></div>
-            <div class="corridor-2 corridors"></div>
-            <div class="corridor-3 corridors"></div>
-        </div>
-        <div class="house-1-map houses-map hidden" id="house-1-map"></div>
-        <div class="house-2-map houses-map hidden" id="house-2-map"></div>
-        <div class="house-3-map houses-map hidden" id="house-3-map"></div>
-        <div class="house-4-map houses-map hidden" id="house-4-map"></div>
-        <div class="house-5-map houses-map hidden" id="house-5-map"></div>
-        <div class="house-6-map houses-map hidden" id="house-6-map"></div>
-        <div class="house-8-map houses-map hidden" id="house-8-map"></div>
-        <div class="house-11-map houses-map hidden" id="house-11-map"></div>
-        <div class="save">
-            <p class="button">Speichern</p>
-        </div>
-    </main>
-    <footer class="bar">
-        <p class="bar-text" id="copyright"></p>
-        <p class="bar-text">Rimolo13 and Mocbuilder</p>
-    </footer>
-    <script src="/js/index.js"></script>
+    <button id="ts">Test-Save</button>
+    <button id="tp">Test-Passwort</button>
+    <button id="tm">Test-Mapdata</button>
+    <script>
+        let ts = document.getElementById("ts");
+        ts.addEventListener("click", async (e) => {
+          const response = await fetch("/POSTMapData", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              "test": "test",
+              "test2": {
+                  "test3": [
+                      "test4","test5"
+                  ]
+              }
+            }),
+          });
+        });
+
+        let tp = document.getElementById("tp");
+        tp.addEventListener("click", async (e) => {
+          const response = await fetch("/GETPassword");
+          console.log(await response.json());
+        });
+
+        let tm = document.getElementById("tm");
+        tm.addEventListener("click", async (e) => {
+          const response = await fetch("/GETMapData");
+          console.log(await response.json());
+        });
+    </script>
 </body>
 </html>
+

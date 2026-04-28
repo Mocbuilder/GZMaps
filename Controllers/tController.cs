@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using System.Reflection;
-using GZMaps.Models;
-using System.Text.Json;
 
 namespace GZMaps.Controllers
 {
@@ -47,11 +45,25 @@ namespace GZMaps.Controllers
             return Json(obj);
         }
 
-        [HttpPost]
-        public IActionResult POSTPassword([FromBody] Password input)
+        [HttpGet]
+        public IActionResult GETPassword()
         {
-            var result = input.IsValid();
-            return Json(result);
+            var assembly = Assembly.GetExecutingAssembly();
+            string resourceName = "GZMaps.password.json";
+
+            using Stream stream = assembly.GetManifestResourceStream(resourceName);
+
+            if (stream == null)
+            {
+                return NotFound("Embedded JSON file not found.");
+            }
+
+            using StreamReader reader = new StreamReader(stream);
+            string jsonData = reader.ReadToEnd();
+
+            var obj = System.Text.Json.JsonSerializer.Deserialize<object>(jsonData);
+
+            return Json(obj);
         }
     }
 }
