@@ -1,7 +1,7 @@
 :root {
-  --bar-background-color: rgb(225,225,225);
-  --main-background-color: rgb(255, 255, 255);
-  --text-color: rgb(0, 0, 0);
+  --bar-background-color: rgb(245,245,240);
+  --main-background-color: rgb(255, 255, 250);
+  --text-color: rgb(3, 3, 0);
   --houses-color: rgb(3, 90, 70);
   --corridors: rgb(0, 70, 50);
 }
@@ -172,9 +172,8 @@ footer {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bar-background-color: rgb(13,13,13);
+    --bar-background-color: rgb(21,21,19);
     --main-background-color: rgb(0, 0, 0);
-    --text-color: rgb(255, 255, 255);
-    --shadows: rgb(225,225,225);
+    --text-color: rgb(255, 255, 250);
   }
 }
