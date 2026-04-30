@@ -1,1 +1,2 @@
-- Endpoints: GetMapData, POSTMapData, GetPassword
+- Endpoints: GetMapData, POSTMapData, POSTPassword (returns json with "IsValid" object true or false)
+- Needs Environment Variables "EditorPassword" in Prod, in Env its just "1234"

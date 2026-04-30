@@ -2,16 +2,23 @@
 {
     public class Password
     {
-        public string _password { get; set; }
+        public string _passwordInput { get; set; }
+        private string _storedPassword { get; set; }
 
-        public Password(string password)
+        public Password(string passwordInput, IConfiguration config)
         {
-            _password = password;
+            _passwordInput = passwordInput;
+
+            _storedPassword = "1234";
+            if(Program._environment == EnvironmentEnum.Production)
+            {
+                _storedPassword = config["EditorPassword"];
+            }
         }
 
         public PasswordResult IsValid()
         {
-            return new PasswordResult(!string.IsNullOrEmpty(_password) && _password == "1234");
+            return new PasswordResult(!string.IsNullOrEmpty(_passwordInput) && _passwordInput == _storedPassword);
         }
     }
 }
