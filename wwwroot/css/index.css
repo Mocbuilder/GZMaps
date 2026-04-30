@@ -50,6 +50,10 @@ body {
     display: none !important;
 }
 
+.headline {
+    font-size: 1.5em;
+}
+
 .bar {
     display: flex;
     background: var(--bar-background-color);
