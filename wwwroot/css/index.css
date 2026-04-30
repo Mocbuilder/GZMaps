@@ -279,7 +279,7 @@ main {
     main {
         display: grid;
         grid-template-columns: unset;
-        grid-template-rows: 10vh 60vh 10vh;
+        grid-template-rows: 10% 80% 10%;
     }
 
     .bar {
