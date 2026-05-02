@@ -1,2 +1,3 @@
 - Endpoints: GetMapData, POSTMapData, POSTPassword
 - POSTPassword expecsts a json with PasswordInput and returns a json with IsValid true/false
+- exe-start-option "forceDev" to force Development mode to use 1234 password.
