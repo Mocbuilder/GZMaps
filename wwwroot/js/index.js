@@ -184,7 +184,8 @@ async function switchmap(map) {
   load_values();
   for (let i = 0; i < houses_maps_ids.length; i++) {
     if (i === map) {
-      document.title = `GZMaps: ${title_maps[i]}`;
+      document.title = `GZMaps - ${title_maps[i]}`;
+      document.getElementById("header").textContent = `GZMaps - ${title_maps[i]}`;
       const activ_map = document.getElementById(houses_maps_ids[i]);
       activ_map.classList.remove("not-displayed");
       if (map === 0) {
