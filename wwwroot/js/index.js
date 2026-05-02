@@ -159,8 +159,10 @@ for (let i = 0; i < routes.length; i++) {
 }
 
 async function switchmap(map) {
-  value_list = (await fetch("/t/GETMapData")).values;
-  load();
+  try {
+    value_list = (await fetch("/t/GETMapData")).values;
+    load();
+  } catch (err) {}
   for (let i = 0; i < houses_maps_ids.length; i++) {
     if (i === map) {
       const activ_map = document.getElementById(houses_maps_ids[i]);
