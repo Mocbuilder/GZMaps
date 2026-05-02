@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -10,15 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="password.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Controllers\tController.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="password.json" />
   </ItemGroup>
 
   <ItemGroup>
