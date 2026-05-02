@@ -1,7 +1,12 @@
+using GZMaps.Models;
+using System;
+
 namespace GZMaps
 {
     public class Program
     {
+        public static EnvironmentEnum _environment = EnvironmentEnum.Development;
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +21,7 @@ namespace GZMaps
 
             if (!app.Environment.IsDevelopment())
             {
+                _environment = EnvironmentEnum.Production;
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
