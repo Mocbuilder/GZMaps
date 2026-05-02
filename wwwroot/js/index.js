@@ -76,15 +76,17 @@ let edit_mode = 0;
 async function edit_switch() {
   if (edit_mode == 0) {
     const getpassword = prompt("Password:");
-    const password_valid = await fetch("/t/POSTPassword", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        PasswordInput: getpassword,
-      }),
-    });
+    if (getpassword != "" && getpassword != null) {
+      const password_valid = await fetch("/t/POSTPassword", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          PasswordInput: getpassword,
+        }),
+      });
+    }
     if ((await password_valid.json()).isValid === true) {
       input_list.forEach((e) => {
         e.readOnly = false;
