@@ -104,6 +104,14 @@ async function edit_switch() {
   }
 }
 
+load_values();
+async function load_values() {
+  try {
+    value_list = (await (await fetch("/t/GETMapData")).json()).values;
+    load();
+  } catch (err) {}
+}
+
 function load() {
   for (let i = 0; i < input_list.length; i++) {
     if (value_list[i] != undefined) {
@@ -159,10 +167,7 @@ for (let i = 0; i < routes.length; i++) {
 }
 
 async function switchmap(map) {
-  try {
-    value_list = (await fetch("/t/GETMapData")).values;
-    load();
-  } catch (err) {}
+  load_values();
   for (let i = 0; i < houses_maps_ids.length; i++) {
     if (i === map) {
       const activ_map = document.getElementById(houses_maps_ids[i]);
