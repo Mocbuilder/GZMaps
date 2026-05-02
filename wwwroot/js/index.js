@@ -168,15 +168,28 @@ for (let i = 0; i < routes.length; i++) {
   });
 }
 
+const title_maps = [
+  "Gesamte Karte",
+  "Haus 1",
+  "Haus 2",
+  "Haus 3",
+  "Haus 4",
+  "Haus 5",
+  "Haus 6",
+  "Haus 8",
+  "Haus 11",
+];
+
 async function switchmap(map) {
   load_values();
   for (let i = 0; i < houses_maps_ids.length; i++) {
     if (i === map) {
+      document.title = `GZMaps: ${title_maps[i]}`;
       const activ_map = document.getElementById(houses_maps_ids[i]);
       activ_map.classList.remove("not-displayed");
       if (map === 0) {
         edit_bar.classList.add("hidden");
-        if(edit_mode === 1){
+        if (edit_mode === 1) {
           edit_switch();
         }
       } else {
