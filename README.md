@@ -1,1 +1,2 @@
-- Endpoints: GetMapData, POSTMapData, GetPassword
+- Endpoints: GetMapData, POSTMapData, POSTPassword
+- POSTPassword expecsts a json with PasswordInput and returns a json with IsValid true/false

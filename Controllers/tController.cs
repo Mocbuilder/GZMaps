@@ -58,7 +58,7 @@ namespace GZMaps.Controllers
         {
             using var document = await JsonDocument.ParseAsync(Request.Body);
 
-            if (document.RootElement.TryGetProperty("passwordInput", out var passwordProp))
+            if (document.RootElement.TryGetProperty("PasswordInput", out var passwordProp))
             {
                 string? rawPassword = passwordProp.GetString();
                 if (string.IsNullOrEmpty(rawPassword)){
