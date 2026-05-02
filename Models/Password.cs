@@ -2,12 +2,12 @@
 {
     public class Password
     {
-        public string passwordInput { get; set; }
+        public string _passwordInput { get; set; }
         private string _storedPassword;
 
-        public Password(string _passwordInput, IConfiguration config)
+        public Password(string passwordInput, IConfiguration config)
         {
-            passwordInput = _passwordInput;
+            _passwordInput = passwordInput;
 
             _storedPassword = "1234";
             if(Program._environment == EnvironmentEnum.Production)
@@ -18,7 +18,7 @@
 
         public PasswordResult IsValid()
         {
-            return new PasswordResult(!string.IsNullOrEmpty(passwordInput) && passwordInput == _storedPassword);
+            return new PasswordResult(!string.IsNullOrEmpty(_passwordInput) && _passwordInput == _storedPassword);
         }
     }
 }
