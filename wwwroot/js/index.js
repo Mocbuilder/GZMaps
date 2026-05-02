@@ -51,36 +51,32 @@ for (let i = 1; i < houses_maps_ids.length; i++) {
   }
 }
 
-load();
-function load() {
-  for (let i = 0; i < input_list.length; i++) {
-    if (value_list[i] !== undefined) {
-      input_list[i].value = value_list[i];
-    }
-  }
-}
-
 edit_button.addEventListener("click", edit_switch);
 
 save_button.addEventListener("click", save);
 
-function save() {
+async function save() {
   value_list = [];
   input_list.forEach((e) => {
     value_list.push(e.value);
   });
-  edit_switch();
-  let send = JSON.stringify({
-    values: value_list,
+  await fetch("/t/POSTMapData", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      values: value_list,
+    }),
   });
-  console.log(send);
+  edit_switch();
 }
 
 let edit_mode = 0;
 async function edit_switch() {
   if (edit_mode == 0) {
-    let getpassword = prompt("Password:");
-    let password_valid = await fetch("/t/POSTPassword", {
+    const getpassword = prompt("Password:");
+    const password_valid = await fetch("/t/POSTPassword", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -105,6 +101,14 @@ async function edit_switch() {
     edit_button.textContent = "bearbeiten";
     edit_mode = 0;
     load();
+  }
+}
+
+function load() {
+  for (let i = 0; i < input_list.length; i++) {
+    if (value_list[i] !== undefined) {
+      input_list[i].value = value_list[i];
+    }
   }
 }
 
@@ -154,7 +158,9 @@ for (let i = 0; i < routes.length; i++) {
   });
 }
 
-function switchmap(map) {
+async function switchmap(map) {
+  value_list = (await fetch("/t/GETMapData")).values;
+  load();
   for (let i = 0; i < houses_maps_ids.length; i++) {
     if (i === map) {
       const activ_map = document.getElementById(houses_maps_ids[i]);
