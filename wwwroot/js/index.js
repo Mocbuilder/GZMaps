@@ -86,14 +86,14 @@ async function edit_switch() {
           PasswordInput: getpassword,
         }),
       });
-    }
-    if ((await password_valid.json()).isValid === true) {
-      input_list.forEach((e) => {
-        e.readOnly = false;
-      });
-      save_button.classList.remove("hidden");
-      edit_button.textContent = "abbrechen";
-      edit_mode = 1;
+      if ((await password_valid.json()).isValid === true) {
+        input_list.forEach((e) => {
+          e.readOnly = false;
+        });
+        save_button.classList.remove("hidden");
+        edit_button.textContent = "abbrechen";
+        edit_mode = 1;
+      }
     }
   } else {
     input_list.forEach((e) => {
