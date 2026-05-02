@@ -9,6 +9,12 @@ namespace GZMaps.Controllers
     public class tController : Controller
     {
         string _mapDataFolder = Path.Combine(Directory.GetCurrentDirectory(), "MapData");
+        private readonly IConfiguration _config;
+
+        public tController(IConfiguration config)
+        {
+            _config = config;
+        }
 
         public IActionResult Index()
         {
@@ -48,10 +54,24 @@ namespace GZMaps.Controllers
         }
 
         [HttpPost]
-        public IActionResult POSTPassword([FromBody] Password input)
+        public async Task<IActionResult> POSTPassword()
         {
-            var result = input.IsValid();
-            return Json(result);
+            using var document = await JsonDocument.ParseAsync(Request.Body);
+
+            if (document.RootElement.TryGetProperty("passwordInput", out var passwordProp))
+            {
+                string? rawPassword = passwordProp.GetString();
+                if (string.IsNullOrEmpty(rawPassword)){
+                    return BadRequest("Invalid JSON structure");
+                }
+
+                var input = new Password(rawPassword, _config);
+
+                var result = input.IsValid();
+                return Json(result);
+            }
+
+            return BadRequest("Invalid JSON structure");
         }
     }
 }
