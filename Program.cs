@@ -1,3 +1,6 @@
+using GZMaps.Models;
+using System;
+
 namespace GZMaps
 {
     public class Program
@@ -18,6 +21,7 @@ namespace GZMaps
 
             if (!app.Environment.IsDevelopment())
             {
+                _environment = EnvironmentEnum.Production;
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
@@ -32,8 +36,7 @@ namespace GZMaps
 
             // Razor Pages
             app.MapRazorPages();
-            app.MapFallbackToFile("/index.html");
-            
+
             // Controllers
             app.MapControllerRoute(
                 name: "default",
