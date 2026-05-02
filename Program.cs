@@ -2,6 +2,8 @@ namespace GZMaps
 {
     public class Program
     {
+        public static EnvironmentEnum _environment = EnvironmentEnum.Development;
+
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
