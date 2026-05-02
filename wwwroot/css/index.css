@@ -84,7 +84,7 @@ body {
   background: var(--button-color-hover);
 }
 
-.under-button {
+#edit-button {
   margin: 0% 5% 5% 5%;
 }
 
@@ -310,8 +310,12 @@ main {
     margin: 1%;
   }
 
-  .edit,
-  .save {
+  #edit-button {
+    margin: 1% 1% 1% 0%;
+  }
+
+  #edit-bar,
+  #save-bar {
     flex-direction: row;
   }
 }

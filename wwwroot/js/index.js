@@ -19,6 +19,87 @@ function correct_resize() {
 }
 
 //all about inputs
+const houses_maps_ids = [
+  "full-map",
+  "house-1-map",
+  "house-2-map",
+  "house-3-map",
+  "house-4-map",
+  "house-5-map",
+  "house-6-map",
+  "house-8-map",
+  "house-11-map",
+];
+
+let edit_button = document.getElementById("edit-button");
+let save_button = document.getElementById("save-button");
+
+const houses_inputs = [10, 10, 15, 5, 4, 3, 6, 2];
+let input_list = [];
+let value_list = [];
+
+for (let i = 1; i < houses_maps_ids.length; i++) {
+  let map = document.getElementById(houses_maps_ids[i]);
+  for (let x = 1; x <= houses_inputs[i - 1]; x++) {
+    let input = document.createElement("input");
+    input.type = "Text";
+    input.id = `h${i}-${x}`;
+    input.placeholder = `${x}`;
+    input.readOnly = true;
+    input_list.push(input);
+    map.appendChild(input);
+  }
+}
+
+load();
+function load() {
+  for (let i = 0; i < input_list.length; i++) {
+    if (value_list[i] !== undefined) {
+      input_list[i].value = value_list[i];
+    }
+  }
+}
+
+edit_button.addEventListener("click", edit_switch);
+
+save_button.addEventListener("click", save);
+
+function save() {
+  value_list = [];
+  input_list.forEach((e) => {
+    value_list.push(e.value);
+  });
+  edit_switch();
+  let send = JSON.stringify({
+    values: value_list,
+  });
+  console.log(send);
+}
+
+let password = "1234";
+
+let edit_mode = 0;
+function edit_switch() {
+  if (edit_mode == 0) {
+    let getpassword = prompt("Password");
+    if (getpassword === password) {
+      input_list.forEach((e) => {
+        e.readOnly = false;
+      });
+      save_button.classList.remove("hidden");
+      edit_button.textContent = "abbrechen";
+      edit_mode = 1;
+    }
+  } else {
+    input_list.forEach((e) => {
+      e.readOnly = true;
+    });
+    save_button.classList.add("hidden");
+    edit_button.textContent = "bearbeiten";
+    edit_mode = 0;
+    load();
+  }
+}
 
 //switch maps
 const routes = [
@@ -45,25 +126,13 @@ const houses_ids = [
   "house-11",
 ];
 
-const houses_map_ids = [
-  "full-map",
-  "house-1-map",
-  "house-2-map",
-  "house-3-map",
-  "house-4-map",
-  "house-5-map",
-  "house-6-map",
-  "house-8-map",
-  "house-11-map",
-];
-
 const edit_bar = document.getElementById("edit-bar");
 
 repage();
 
 function repage() {
   for (let i = 0; i < routes.length; i++) {
-    if (routes[i] == window.location.pathname) {
+    if (routes[i] === window.location.pathname) {
       switchmap(i);
     }
   }
@@ -79,17 +148,17 @@ for (let i = 0; i < routes.length; i++) {
 }
 
 function switchmap(map) {
-  for (let i = 0; i < houses_map_ids.length; i++) {
-    if (i == map) {
-      const activ_map = document.getElementById(houses_map_ids[i]);
+  for (let i = 0; i < houses_maps_ids.length; i++) {
+    if (i === map) {
+      const activ_map = document.getElementById(houses_maps_ids[i]);
       activ_map.classList.remove("not-displayed");
-      if (map == 0) {
+      if (map === 0) {
         edit_bar.classList.add("hidden");
       } else {
         edit_bar.classList.remove("hidden");
       }
     } else {
-      const inactiv_map = document.getElementById(houses_map_ids[i]);
+      const inactiv_map = document.getElementById(houses_maps_ids[i]);
       inactiv_map.classList.add("not-displayed");
     }
   }
