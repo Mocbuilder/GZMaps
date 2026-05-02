@@ -10,15 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="password.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Controllers\tController.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="password.json" />
   </ItemGroup>
 
   <ItemGroup>

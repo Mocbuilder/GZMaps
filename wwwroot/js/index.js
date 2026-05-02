@@ -8,25 +8,25 @@ correct_resize();
 //full_map.classList.add("hidden")
 
 window.addEventListener("resize", (e) => {
-    correct_resize();
+  correct_resize();
 });
 
 function correct_resize() {
-    if (
-        (window.innerWidth < full_map.clientHeight) &
-        ((window.innerWidth < full_map_maxheight) |
-            (window.innerWidth < full_map_70height))
-    ) {
-        full_map.style.height = "auto";
-        full_map.style.width = "100%";
-    }
-    if (
-        (window.innerWidth > full_map_maxheight) |
-        (window.innerWidth > full_map_70height)
-    ) {
-        full_map.style.height = "100%";
-        full_map.style.width = "auto";
-    }
+  if (
+    (window.innerWidth < full_map.clientHeight) &
+    ((window.innerWidth < full_map_maxheight) |
+      (window.innerWidth < full_map_70height))
+  ) {
+    full_map.style.height = "auto";
+    full_map.style.width = "100%";
+  }
+  if (
+    (window.innerWidth > full_map_maxheight) |
+    (window.innerWidth > full_map_70height)
+  ) {
+    full_map.style.height = "100%";
+    full_map.style.width = "auto";
+  }
 }
 
 //date for copyright
