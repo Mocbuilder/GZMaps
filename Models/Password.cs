@@ -3,7 +3,7 @@
     public class Password
     {
         public string _passwordInput { get; set; }
-        private string _storedPassword { get; set; }
+        private string _storedPassword;
 
         public Password(string passwordInput, IConfiguration config)
         {
