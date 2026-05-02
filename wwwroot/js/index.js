@@ -106,7 +106,7 @@ async function edit_switch() {
 
 function load() {
   for (let i = 0; i < input_list.length; i++) {
-    if (value_list[i] !== undefined) {
+    if (value_list[i] != undefined) {
       input_list[i].value = value_list[i];
     }
   }
