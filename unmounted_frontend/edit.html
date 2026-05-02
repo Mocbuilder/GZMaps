@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        user-select: all;
+        transition: all 1s;
+      }
+      .hidden {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="house-1"></div>
+    <div id="house-2"></div>
+    <button id="save" class="hidden">save</button>
+    <button id="edit">bearbeiten</button>
+    <script>
+      let edit_button = document.getElementById("edit");
+      let save_button = document.getElementById("save");
+      let house_1 = document.getElementById("house-1");
+      let house_2 = document.getElementById("house-2");
+      let houses = [house_1, house_2];
+      let houses_inputs = [10, 5];
+      let input_list = [];
+      let value_list = [];
+
+      for (let i = 1; i <= houses.length; i++) {
+        add_inputs(i, houses_inputs[i - 1]);
+      }
+
+      load();
+
+      function add_inputs(house, inputs) {
+        for (let i = 1; i <= inputs; i++) {
+          let input = document.createElement("input");
+          input.type = "Text";
+          input.id = `h${house}-${i}`;
+          input.placeholder = `${i}`;
+          input.readOnly = true;
+          input_list.push(input);
+          houses[house - 1].appendChild(input);
+        }
+      }
+
+      function load() {
+        for (let i = 0; i < input_list.length; i++) {
+          if (value_list[i] != undefined) {
+            input_list[i].value = value_list[i];
+          }
+        }
+      }
+
+      edit_button.addEventListener("click", edit_switch);
+
+      save_button.addEventListener("click", save);
+
+      function save() {
+        value_list = [];
+        input_list.forEach((e) => {
+          value_list.push(e.value);
+        });
+        edit_switch();
+        let send = JSON.stringify({
+          values: value_list,
+        });
+        console.log(send);
+      }
+
+      let edit_mode = 0;
+      function edit_switch() {
+        if (edit_mode == 0) {
+          input_list.forEach((e) => {
+            e.readOnly = false;
+          });
+          save_button.classList.remove("hidden");
+          edit_button.textContent = "abbrechen";
+          edit_mode = 1;
+        } else {
+          input_list.forEach((e) => {
+            e.readOnly = true;
+          });
+          save_button.classList.add("hidden");
+          edit_button.textContent = "bearbeiten";
+          edit_mode = 0;
+          load();
+        }
+      }
+    </script>
+  </body>
+</html>
