@@ -176,6 +176,9 @@ async function switchmap(map) {
       activ_map.classList.remove("not-displayed");
       if (map === 0) {
         edit_bar.classList.add("hidden");
+        if(edit_mode === 1){
+          edit_switch();
+        }
       } else {
         edit_bar.classList.remove("hidden");
       }
