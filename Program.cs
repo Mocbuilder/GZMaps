@@ -30,7 +30,8 @@ namespace GZMaps
 
             // Razor Pages
             app.MapRazorPages();
-
+            app.MapFallbackToFile("/index.html");
+            
             // Controllers
             app.MapControllerRoute(
                 name: "default",

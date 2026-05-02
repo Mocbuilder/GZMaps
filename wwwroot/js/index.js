@@ -59,10 +59,9 @@ const houses_map_ids = [
 
 const edit_bar = document.getElementById("edit-bar");
 
-[("load", "popstate")].forEach((e) => window.addEventListener(e, repage));
+repage();
 
-function repage(e) {
-  e.preventDefault();
+function repage() {
   for (let i = 0; i < routes.length; i++) {
     if (routes[i] == window.location.pathname) {
       switchmap(i);
@@ -73,8 +72,7 @@ function repage(e) {
 for (let i = 0; i < routes.length; i++) {
   const houses = document.getElementById(houses_ids[i]);
   let path = routes[i];
-  houses.addEventListener("click", (e) => {
-    e.preventDefault();
+  houses.addEventListener("click", () => {
     history.pushState({}, "", path);
     switchmap(i);
   });
