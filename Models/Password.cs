@@ -3,7 +3,7 @@
     public class Password
     {
         public string _passwordInput { get; set; }
-        private string _storedPassword;
+        private string _storedPassword = "";
 
         public Password(string passwordInput, IConfiguration config)
         {
@@ -12,7 +12,7 @@
             _storedPassword = "1234";
             if(Program._environment == EnvironmentEnum.Production)
             {
-                _storedPassword = config["EditorPassword"];
+                _storedPassword = config["EditorPassword"] ?? _storedPassword;
             }
         }
 
