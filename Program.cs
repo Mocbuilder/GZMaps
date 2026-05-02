@@ -43,8 +43,6 @@ namespace GZMaps
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            app.MapFallbackToController("Index", "t");
-
             app.Run();
         }
     }
