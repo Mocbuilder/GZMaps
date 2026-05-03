@@ -44,7 +44,7 @@ namespace GZMaps
 
             // Razor Pages
             app.MapRazorPages();
-            app.MapFallbackToFile("/index.html");
+            app.MapFallbackToPage("/Index");
 
             // Controllers
             app.MapControllerRoute(
