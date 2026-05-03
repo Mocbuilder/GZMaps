@@ -162,19 +162,23 @@ const title_maps = [
 const edit_bar = document.getElementById("edit-bar");
 
 ["load", "popstate"].forEach((e) => window.addEventListener(e, repage));
-repage();
+
 function repage() {
   for (let i = 0; i < routes.length; i++) {
     if (routes[i] === window.location.pathname) {
       switchmap(i);
+      return;
     }
   }
+  let path = routes[0];
+  history.pushState({}, "", path);
+  switchmap(0);
 }
 
 for (let i = 0; i < routes.length; i++) {
   const houses = document.getElementById(houses_ids[i]);
-  let path = routes[i];
   houses.addEventListener("click", () => {
+    let path = routes[i];
     history.pushState({}, "", path);
     switchmap(i);
   });
