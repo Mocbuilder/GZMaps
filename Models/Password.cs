@@ -25,6 +25,7 @@ namespace GZMaps.Models
                 return new PasswordResult(false);
             }
 
+            /*
             if(_passwordInput == "LemmyIsGod")
             {
                 Process.Start(new ProcessStartInfo { FileName = "https://youtu.be/fM1UPeAOyHM?si=B5QVM3Gl32ScGb6w", UseShellExecute = true });
@@ -44,6 +45,7 @@ namespace GZMaps.Models
             {
                 Process.Start(new ProcessStartInfo { FileName = "https://youtu.be/CLWlCQZy87g?si=nNuZagMzejflPyff", UseShellExecute = true });
             }
+            */ 
 
             return new PasswordResult(_passwordInput == _storedPassword);
         }
