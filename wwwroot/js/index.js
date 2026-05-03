@@ -161,8 +161,8 @@ const title_maps = [
 
 const edit_bar = document.getElementById("edit-bar");
 
+["load", "popstate"].forEach((e) => window.addEventListener(e, repage));
 repage();
-
 function repage() {
   for (let i = 0; i < routes.length; i++) {
     if (routes[i] === window.location.pathname) {
