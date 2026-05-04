@@ -196,8 +196,8 @@ function repage() {
 
 for (let i = 0; i < routes.length; i++) {
   const houses = document.getElementById(houses_ids[i]);
+  let path = routes[i];
   houses.addEventListener("click", () => {
-    let path = routes[i];
     history.pushState({}, "", path);
     switchmap(i);
   });
