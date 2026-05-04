@@ -215,7 +215,11 @@ async function switchmap(map) {
       document.getElementById("header").textContent =
         `GZMaps - ${title_maps[i]}`;
       const activ_map = document.getElementById(houses_maps_ids[i]);
+      activ_map.classList.add("hidden");
       activ_map.classList.remove("not-displayed");
+      setTimeout(() => {
+        activ_map.classList.remove("hidden");
+      }, 30);
       if (map === 0) {
         edit_bar.classList.add("hidden");
         if (edit_mode === 1) {
