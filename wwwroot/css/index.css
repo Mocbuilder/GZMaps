@@ -7,7 +7,8 @@
   --text-bar-color: rgb(3, 3, 0);
   --houses-color: rgb(3, 90, 70);
   --houses-color-hover: rgb(3, 130, 110);
-  --corridors: rgb(30, 70, 50);
+  --corridors-color: rgb(30, 70, 50);
+  --basements-color: rgb(3, 75, 55);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -175,7 +176,7 @@ main {
 
 .corridors {
   display: grid;
-  background: var(--corridors);
+  background: var(--corridors-color);
   height: 100%;
   width: 100%;
 }
@@ -252,6 +253,10 @@ main {
   border: solid var(--houses-color-hover) 1px;
   background: var(--houses-color);
   outline: none;
+}
+
+.basements {
+  background: var(--basements-color) !important;
 }
 
 .house-1-map {

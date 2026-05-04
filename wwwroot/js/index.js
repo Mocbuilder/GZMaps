@@ -35,6 +35,7 @@ let edit_button = document.getElementById("edit-button");
 let save_button = document.getElementById("save-button");
 
 const houses_inputs = [10, 10, 18, 5, 4, 3, 6, 2];
+const basements = [2, 2, 3, 1, 1, 1, 2, 0];
 let input_list = [];
 let value_list = [];
 
@@ -46,6 +47,9 @@ for (let i = 1; i < houses_maps_ids.length; i++) {
     input.id = `h${i}-${x}`;
     input.placeholder = `${x}`;
     input.readOnly = true;
+    if (houses_inputs[i - 1] - basements[i - 1] < x) {
+      input.classList.add("basements");
+    }
     input_list.push(input);
     map.appendChild(input);
   }
