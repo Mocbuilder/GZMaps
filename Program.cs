@@ -41,12 +41,11 @@ namespace GZMaps
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseHttpsRedirection();
 
-            // Razor Pages
             app.MapRazorPages();
             app.MapFallbackToPage("/Index");
 
-            // Controllers
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
