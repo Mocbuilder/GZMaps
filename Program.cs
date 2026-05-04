@@ -26,7 +26,7 @@ namespace GZMaps
                 app.UseHsts();
             }
 
-            if (!string.IsNullOrEmpty(args[0]))
+            if (args.Length > 0)
             {
                 if (args[0] == "forceDev")
                 {
