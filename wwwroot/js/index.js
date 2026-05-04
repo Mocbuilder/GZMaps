@@ -34,7 +34,7 @@ const houses_maps_ids = [
 let edit_button = document.getElementById("edit-button");
 let save_button = document.getElementById("save-button");
 
-const houses_inputs = [10, 10, 15, 5, 4, 3, 6, 2];
+const houses_inputs = [10, 10, 18, 5, 4, 3, 6, 2];
 let input_list = [];
 let value_list = [];
 

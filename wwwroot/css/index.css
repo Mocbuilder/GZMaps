@@ -265,7 +265,7 @@ main {
 }
 
 .house-3-map {
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   grid-template-columns: 40% 20% 40%;
 }
 
