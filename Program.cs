@@ -1,4 +1,5 @@
 using GZMaps.Models;
+using Microsoft.AspNetCore.HttpOverrides;
 using System;
 
 namespace GZMaps
@@ -11,13 +12,19 @@ namespace GZMaps
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services FIRST
             builder.Services.AddRazorPages();
             builder.Services.AddControllers();
 
+            builder.Services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
+            });
+
             var app = builder.Build();
 
-            // Configure middleware after Build()
+            app.UseForwardedHeaders();
 
             if (!app.Environment.IsDevelopment())
             {
@@ -41,7 +48,6 @@ namespace GZMaps
             app.UseRouting();
 
             app.UseAuthorization();
-            app.UseHttpsRedirection();
 
             app.MapRazorPages();
             app.MapFallbackToPage("/Index");
