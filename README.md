@@ -36,3 +36,7 @@ $env:ASPNETCORE_URLS="https://*:7274;http://*:5104"
 GZMaps can be started with the following arguments:
 #### forceDev
 When starting with this argument, GZMaps will ignore the current environment and start in Development mode. The Editor Password is then fixed as "1234", to make testing easier.
+
+# Known Issues
+- Currently there is no way to change the port the application runs on, except for setting the `ASPNETCORE_URLS` environment variable.
+- There is no handling for two people trying to edit the map at the same time, which can lead to data loss. This is going to be added in the future, but for now its best to just not edit at the same time.
