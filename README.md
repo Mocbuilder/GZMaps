@@ -12,7 +12,12 @@ Package, which is used for containerization and deployment to Environments like 
 ## How to Use
 GZMaps was built with Containerisation in mind, therefore the easiest way to use it is to build the Docker image and run it in a container. However, it can also be run locally using the exe.
 ### Running with Docker
-Coming soon, instructions on how to build the Docker image and run it in a container will be added here.
+The Docker Image can be downloaded from the latest release on Github , or built locally using the provided Dockerfile.
+The image requires the following environment variables to be set:
+- `EditorPassword` -> The password needed to access the editor interface.
+
+The image also accepts the following arguments to be appended to the exec command:
+- `--forceDev` -> This argument is needed to start the image in Development mode. See more on that in the <a href="#startup-arguments">Startup Arguments</a> section below.
 
 ### Running Locally
 1. Download the latest release from Github and extract the zip file.
