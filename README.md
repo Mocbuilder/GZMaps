@@ -19,6 +19,8 @@ The image requires the following environment variables to be set:
 The image also accepts the following arguments to be appended to the exec command:
 - `--forceDev` -> This argument is needed to start the image in Development mode. See more on that in the <a href="#startup-arguments">Startup Arguments</a> section below.
 
+If Docker is running on a ARM-CPU, the provided image probably wont work. There will be a ARM-compatible image soon, but for now, building the image locally from a clone of the repo is the only viable way.
+
 ### Running Locally
 1. Download the latest release from Github and extract the zip file.
 2. Open Powershell and navigate to the extracted folder.
