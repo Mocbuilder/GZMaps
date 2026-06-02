@@ -20,7 +20,13 @@ The image also accepts the following arguments to be appended to the exec comman
 - `--forceDev` -> This argument is needed to start the image in Development mode. See more on that in the <a href="#startup-arguments">Startup Arguments</a> section below.
 
 If Docker is running on a ARM-CPU, the provided image probably wont work. There will be a ARM-compatible image soon, but for now, building the image locally from a clone of the repo is the only viable way.
-
+#### Required Permissions
+When running the image, the container needs to be able to write to the MapData folder, to be able to save changes to the map. This can be done by mounting a local folder to the container, or by giving the container permissions to write to the folder on the host system.
+Example:
+```
+sudo chown -R 1654:1654 ./path/to/host/MapData
+```
+This command gives the user with the ID 1654 (the default user dotnet uses in the container) ownership of the MapData folder on the host system, allowing the container to write to it.
 ### Running Locally
 1. Download the latest release from Github and extract the zip file.
 2. Open Powershell and navigate to the extracted folder.
