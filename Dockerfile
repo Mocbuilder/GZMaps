@@ -23,8 +23,19 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./GZMaps.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
+# This stage is used in production or when running from VS in regular mode
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+# ----------------------------------------------------
+# Fix for Issue #1: Create folder and grant permissions to the app user
+# ----------------------------------------------------
+USER root
+RUN mkdir -p /app/MapData && chown -R $APP_UID:$APP_UID /app/MapData
+
+# Switch back to the safe, non-root user for execution
+USER $APP_UID
+# ----------------------------------------------------
+
 ENTRYPOINT ["dotnet", "GZMaps.dll"]
