@@ -13,6 +13,16 @@ namespace GZMaps
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddRazorPages();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowGithubPagesRimolo", policy =>
+                {
+                    policy.WithOrigins("https://rimolo13.github.io")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             builder.Services.AddControllers();
 
             builder.Services.Configure<ForwardedHeadersOptions>(options =>
@@ -40,6 +50,8 @@ namespace GZMaps
                     _environment = EnvironmentEnum.Development;
                 }
             }
+
+            app.UseCors("AllowGithubPagesRimolo");
 
             app.UseHttpsRedirection();
 
